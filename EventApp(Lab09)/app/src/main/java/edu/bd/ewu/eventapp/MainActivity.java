@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         String keys[] = {"action", "id", "semester"};
         String values[] = {"restore", "2019-1-60-197", "2022-2"};
 
-        HttpReq httpReq = new HttpReq();
+        HttpReq httpReq = new HttpReq(this);
         httpReq.httpRequest(keys, values);
     }
 }

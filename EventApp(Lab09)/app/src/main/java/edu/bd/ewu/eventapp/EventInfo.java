@@ -141,7 +141,7 @@ public class EventInfo extends AppCompatActivity {
                         String keys[] = {"action", "id", "semester", "key", "event"};
                         String values[] = {"backup", "2019-1-60-197", "2022-2", key, value};
 
-                        HttpReq httpReq = new HttpReq();
+                        HttpReq httpReq = new HttpReq(this);
                         httpReq.httpRequest(keys, values);
 
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));

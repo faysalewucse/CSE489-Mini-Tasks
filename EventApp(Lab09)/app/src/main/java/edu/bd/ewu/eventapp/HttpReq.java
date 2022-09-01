@@ -1,6 +1,7 @@
 package edu.bd.ewu.eventapp;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.AsyncTask;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.NameValuePair;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.message.BasicNameValuePair;
@@ -12,6 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HttpReq {
+    Context context;
+    public HttpReq(Context context) {
+        this.context = context;
+    }
+
     @SuppressLint("StaticFieldLeak")
     public void httpRequest(final String keys[], final String values[]){
         new AsyncTask<Void, Void, String>(){
@@ -33,11 +39,15 @@ public class HttpReq {
                 if(data != null){
                     try{
                         JSONObject jsonObject = new JSONObject(data);
-                        JSONArray jsonArray = new JSONArray();
-
+                        JSONArray events = jsonObject.getJSONArray("events");
+                        for (int i = 0; i < events.length(); i++) {
+                            JSONObject e = events.getJSONObject(i);
+                            String k = e.getString("key");
+                            String v = e.getString("value");
+                            KeyValueDB db = new KeyValueDB(context);
+                            db.updateValueByKey(k, v);
+                        }
                         System.out.println("Data:"+jsonObject.getString("events"));
-//                        Log.d("EVENTDATA", "Data: "+data);
-                        //webView.loadData(data, "text/html", "UTF-8");
                     }
                     catch (Exception e){
                         e.printStackTrace();
