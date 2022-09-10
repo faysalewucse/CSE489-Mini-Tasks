@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "183475430118",
+    "project_id": "addressbook-23b86",
+    "storage_bucket": "addressbook-23b86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183475430118:android:8f8bbea5645981097b5127",
+        "android_client_info": {
+          "package_name": "edu.bd.ewu.addressbookremotedb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183475430118-a492550lpgfqs1qc1spjvugrmhdf8uj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN150no7KdPb-L7GDwH4MXlwceu4g1IH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183475430118-a492550lpgfqs1qc1spjvugrmhdf8uj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

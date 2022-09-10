@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Faysal Ahmed"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/user_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="01634495020"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/user_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Demra, Dhaka"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/edit_btn"
+        android:layout_width="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:src="@drawable/edit_icon"/>
+
+
+
+</LinearLayout>
