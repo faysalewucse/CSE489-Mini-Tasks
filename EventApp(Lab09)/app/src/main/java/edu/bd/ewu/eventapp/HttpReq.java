@@ -28,8 +28,7 @@ public class HttpReq {
                     for(int i=0;i<keys.length;i++){
                         params.add(new BasicNameValuePair(keys[i], values[i]));
                     }
-                    String data = JSONParser.getInstance().makeHttpRequest("http://www.muthosoft.com/univ/cse489/index.php", "POST", params);
-                    return data;
+                    return JSONParser.getInstance().makeHttpRequest("http://www.muthosoft.com/univ/cse489/index.php", "POST", params);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -47,7 +46,6 @@ public class HttpReq {
                             KeyValueDB db = new KeyValueDB(context);
                             db.updateValueByKey(k, v);
                         }
-                        System.out.println("Data:"+jsonObject.getString("events"));
                     }
                     catch (Exception e){
                         e.printStackTrace();

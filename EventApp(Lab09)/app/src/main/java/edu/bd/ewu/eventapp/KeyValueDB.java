@@ -2,6 +2,7 @@ package edu.bd.ewu.eventapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class KeyValueDB extends SQLiteOpenHelper {
 
     // TABLE INFORMATTION
+    private Context context;
     static final String DB_NAME = "KEY_VALUE.DB";
     public final String TABLE_KEY_VALUE = "key_value_pairs";
     public final String KEY = "keyname";
@@ -16,6 +18,7 @@ public class KeyValueDB extends SQLiteOpenHelper {
     //
     public KeyValueDB(Context context) {
         super(context, DB_NAME, null, 1);
+        this.context = context;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -103,7 +106,17 @@ public class KeyValueDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         int isDeleted = 0;
         try{
+            SharedPreferences pref = context.getSharedPreferences("DELETEDKEYS", Context.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = pref.edit();
+            String keys = pref.getString("KEYS", "");
             isDeleted = db.delete(TABLE_KEY_VALUE, KEY + " = ?", new String[] { key });
+            if(isDeleted == 1){
+                String noSpaceStr = key.replaceAll("\\s", "");
+                if(keys.equals("")) prefEditor.putString("KEYS", noSpaceStr);
+                else prefEditor.putString("KEYS", keys+"@@"+noSpaceStr);
+                prefEditor.apply();
+            }
+            System.out.println(isDeleted);
         }catch (Exception e){
             handleError(db, e);
             try {
